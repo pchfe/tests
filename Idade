@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <locale.h>
+#include <time.h>
+
+int main(){
+    setlocale(LC_ALL,"Portuguese");
+    
+    int nasc;
+    time_t agora = time(NULL);
+    struct tm *data_hora = localtime(&agora);
+    int ano = data_hora->tm_year + 1900;
+    
+    while(1) {
+    printf("Em que ano você nasceu? ");
+    scanf(" %d", &nasc);
+
+    if(nasc >= 1900 && nasc <= 2005) {
+        break;
+    }
+        printf("Ano de nascimento inválido. Digite novamente.\n");
+    }
+    
+    int idade = ano - nasc;
+    printf("Você tem %d, certo?\nSeja bem-vindo (a) ao Banco Estudonauta!\n", idade);
+        if(idade>=65) {
+            printf("==== ATENÇÃO!! DIRIJA-SE PARA A FILA PREFERENCIAL! ====");
+        }
+    
+    return 0;
+}
